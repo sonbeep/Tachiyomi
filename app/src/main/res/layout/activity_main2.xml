@@ -3,18 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#A38989"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".act.MainActivity">
     <TextView
-        android:id="@+id/chu"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trang chu"/>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ln_main"/>
+        android:text="kkkkkkkkkkkkkkkkkkkk"/>
 
 </LinearLayout>

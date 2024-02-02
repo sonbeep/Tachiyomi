@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
     android:layout_height="match_parent">
-    <TextView
-        android:text="FirstCommit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <include layout="@layout/tool_bar"
+        android:id="@+id/toolBar"/>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:background="@drawable/bg_chu_de_xam"
+        android:orientation="horizontal"
+        android:layout_width="204dp"
+        android:layout_height="33dp">
+        <TextView
+            android:id="@+id/btnThieuNhi"
+            android:fontFamily="@font/roboto_black"
+            android:textColor="@color/bg_topic"
+            android:gravity="center"
+            android:text="@string/thieu_nhi"
+            android:layout_margin="1dp"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_chu_de_vang"/>
+        <TextView
+            android:id="@+id/btnKhac"
+            android:fontFamily="@font/roboto_black"
+            android:textColor="@color/khac"
+            android:gravity="center"
+            android:text="@string/khac"
+            android:layout_margin="1dp"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_chu_de_xam"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>
