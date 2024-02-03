@@ -2,4 +2,13 @@
     <string name="app_name">Tachiyomi</string>
     <string name="thieu_nhi">Thiếu nhi</string>
     <string name="khac">Khác</string>
+    <string name="danh_muc">Danh mục</string>
+    <string name="bang_xep_hang">Bảng xếp hạng</string>
+    <string name="moi_nhat">Mới nhất</string>
+    <string name="tat_ca">Tất cả</string>
+    <string name="da_hoan_thanh">Đã hoàn thành</string>
+    <string name="truyen_kieu_moi">Truyện kiểu mới</string>
+    <string name="noi_dung_vua_xem">Nội dung vừa xem</string>
+    <string name="trang_chu">Trang chủ</string>
+    <string name="tu_truyen">Tủ truyện</string>
 </resources>
