@@ -151,6 +151,7 @@
                         android:textColor="@color/tat_ca"/>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rycFavorite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -167,6 +168,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
+                    android:id="@+id/btnDaHoanThanh"
                     android:layout_marginBottom="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -187,6 +189,7 @@
                         android:textColor="@color/tat_ca"/>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rycPopular"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -223,6 +226,7 @@
                         android:textColor="@color/tat_ca"/>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rycUpComing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -259,6 +263,7 @@
                         android:textColor="@color/tat_ca"/>
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rycTopRate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"

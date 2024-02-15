@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tachiyomi.R
 import com.example.tachiyomi.adapter.BannerAdapter
+import com.example.tachiyomi.adapter.TruyenAdapter
 import com.example.tachiyomi.databinding.FrgTrangChuBinding
 import com.example.tachiyomi.model.Banner
+import com.example.tachiyomi.viewmodel.DaHoanThanhVM
 import com.example.tachiyomi.viewmodel.TrangChuVM
 import org.koin.android.ext.android.inject
 
@@ -17,6 +19,7 @@ class FragmentTrangChu : Fragment() {
     private val listBanner =
         arrayListOf<Banner>(Banner(R.drawable.banner), Banner(R.drawable.banner))
     val viewModel : TrangChuVM by inject<TrangChuVM> ()
+    val hoanThanhVM: DaHoanThanhVM by inject<DaHoanThanhVM>()
 
 
     override fun onCreateView(
@@ -39,6 +42,10 @@ class FragmentTrangChu : Fragment() {
 
     private fun setUpUI() {
         binding?.viewPagerBanner?.adapter = BannerAdapter(listBanner)
+        hoanThanhVM.getAllMovieFavorite()
+        viewModel.getAllMoviePopular()
+        viewModel.getAllMovieTopRate()
+        viewModel.getAllMovieUpComing()
     }
 
     private fun listenLiveData() {
@@ -57,18 +64,38 @@ class FragmentTrangChu : Fragment() {
                 binding?.btnKhac?.setTextColor(resources.getColor(R.color.bg_topic))
             }
         }
+        hoanThanhVM.allMovie.observe(viewLifecycleOwner){
+            binding?.rycFavorite?.adapter = TruyenAdapter(requireContext(), hoanThanhVM.allMovie.value?.allMovie ?: listOf())
+        }
+        viewModel.allMoviePopular.observe(viewLifecycleOwner){
+            binding?.rycPopular?.adapter = TruyenAdapter(requireContext(), viewModel.allMoviePopular.value?.allMovie ?: listOf())
+        }
+        viewModel.allMovieUpComing.observe(viewLifecycleOwner){
+            binding?.rycUpComing?.adapter = TruyenAdapter(requireContext(), viewModel.allMovieUpComing.value?.allMovie ?: listOf())
+        }
+        viewModel.allMovieTopRate.observe(viewLifecycleOwner){
+            binding?.rycTopRate?.adapter = TruyenAdapter(requireContext(), viewModel.allMovieTopRate.value?.allMovie ?: listOf())
+        }
+
 
     }
 
     private fun listenAppEvent() {
-        binding?.btnThieuNhi?.setOnClickListener {
-            viewModel.topic.value = 1
+        binding?.let { binding ->
+
+            binding.btnThieuNhi.setOnClickListener {
+                viewModel.topic.value = 1
+            }
+            binding.btnKhac.setOnClickListener {
+                viewModel.topic.value = 0
+            }
+            binding.btnDaHoanThanh.setOnClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.ln_main, FragmentDaHoanThanh()).commit()
+            }
         }
-        binding?.btnKhac?.setOnClickListener {
-            viewModel.topic.value = 0
-        }
+
+
     }
-
-
 }
 

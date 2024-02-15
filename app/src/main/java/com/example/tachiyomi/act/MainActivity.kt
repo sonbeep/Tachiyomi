@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpUI() {
         viewModel.bottomSheetStatus.value = 1
-
     }
 
     private fun listenAppEvent() {
