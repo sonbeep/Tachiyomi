@@ -12,11 +12,14 @@ import com.example.tachiyomi.adapter.DaHoanThanhAdapter
 import com.example.tachiyomi.adapter.OnGoToDetail
 import com.example.tachiyomi.databinding.FrgDaHoanThanhBinding
 import com.example.tachiyomi.viewmodel.DaHoanThanhVM
+import com.example.tachiyomi.viewmodel.DetailMovieVM
 import org.koin.android.ext.android.inject
 
 class FragmentDaHoanThanh : Fragment(), OnGoToDetail {
     private var binding : FrgDaHoanThanhBinding? = null
     val viewModel : DaHoanThanhVM by inject<DaHoanThanhVM>()
+    val viewModelDetail : DetailMovieVM by inject<DetailMovieVM>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -76,6 +79,7 @@ class FragmentDaHoanThanh : Fragment(), OnGoToDetail {
     }
 
     override fun onClickDetail(movieId: Int) {
+        viewModelDetail.movieId.value = movieId
         requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentChiTietPhim()).commit()
     }
 }

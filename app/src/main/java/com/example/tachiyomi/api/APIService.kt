@@ -2,10 +2,13 @@ package com.example.tachiyomi.api
 
 import com.example.tachiyomi.model.AllMovie
 import com.example.tachiyomi.model.DetailMovie
+import com.example.tachiyomi.model.ListTheLoai
+import com.example.tachiyomi.model.TheLoai
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 interface APIService {
     @GET("/3/movie/now_playing?api_key=e9e9d8da18ae29fc430845952232787c&language=en-US&page=1")
@@ -20,8 +23,15 @@ interface APIService {
     @GET("/3/movie/top_rated?api_key=e9e9d8da18ae29fc430845952232787c&language=en-US&page=1")
     fun getAllMovieTopRate(): Call<AllMovie>
 
-    @GET("/3/movie/{movie_id}?api_key=e9e9d8da18ae29fc430845952232787c&append_to_response=videos")
+//    @GET("/3/movie/933131?api_key=e9e9d8da18ae29fc430845952232787c&append_to_response=videos")
+//    fun getDetailMovie() : Call<DetailMovie>
+
+    @GET
     fun getDetailMovie(
-        @Query("movie_id") movieId: Int
+        @Url url: String
     ) : Call<DetailMovie>
+
+
+    @GET("/3/genre/movie/list?api_key=df15a04d63ef140e3fcf60ed11d270a1&language=en-US")
+    fun getGenre() : Call<ListTheLoai>
 }
