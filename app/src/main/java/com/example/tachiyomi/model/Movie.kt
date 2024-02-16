@@ -8,5 +8,6 @@ data class Movie (
     @SerializedName("poster_path") val posterPath : String,
     @SerializedName("release_date") val releaseDate : String,
     @SerializedName("title") val title : String,
-    @SerializedName("vote_count") val voteCount : Int
+    @SerializedName("vote_count") val voteCount : Int,
+    @SerializedName("id") val id : Int
 )

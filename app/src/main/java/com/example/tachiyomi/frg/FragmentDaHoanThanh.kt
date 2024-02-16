@@ -9,11 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.tachiyomi.R
 import com.example.tachiyomi.adapter.DaHoanThanhAdapter
+import com.example.tachiyomi.adapter.OnGoToDetail
 import com.example.tachiyomi.databinding.FrgDaHoanThanhBinding
 import com.example.tachiyomi.viewmodel.DaHoanThanhVM
 import org.koin.android.ext.android.inject
 
-class FragmentDaHoanThanh : Fragment() {
+class FragmentDaHoanThanh : Fragment(), OnGoToDetail {
     private var binding : FrgDaHoanThanhBinding? = null
     val viewModel : DaHoanThanhVM by inject<DaHoanThanhVM>()
     override fun onCreateView(
@@ -69,8 +70,12 @@ class FragmentDaHoanThanh : Fragment() {
             }
         }
         viewModel.allMovie.observe(viewLifecycleOwner){
-            binding?.rycDaHoanThanh?.adapter = DaHoanThanhAdapter(requireContext(), viewModel.allMovie.value?.allMovie ?: listOf())
+            binding?.rycDaHoanThanh?.adapter = DaHoanThanhAdapter(requireContext(), viewModel.allMovie.value?.allMovie ?: listOf(), this)
         }
 
+    }
+
+    override fun onClickDetail(movieId: Int) {
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentChiTietPhim()).commit()
     }
 }

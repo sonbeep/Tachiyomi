@@ -48,11 +48,12 @@
             </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="223dp">
                 <androidx.viewpager2.widget.ViewPager2
+                    android:background="@drawable/bg_hoan_thanh_vang"
                     android:id="@+id/viewPagerBanner"
-                    android:layout_marginHorizontal="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 

@@ -3,6 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
+        android:src="@drawable/truyen"
+        android:scaleType="fitXY"
+        android:background="@drawable/bg_hoan_thanh_vang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ivBanner"/>

@@ -41,7 +41,7 @@ class FragmentTrangChu : Fragment() {
     }
 
     private fun setUpUI() {
-        binding?.viewPagerBanner?.adapter = BannerAdapter(listBanner)
+
         hoanThanhVM.getAllMovieFavorite()
         viewModel.getAllMoviePopular()
         viewModel.getAllMovieTopRate()
@@ -66,6 +66,7 @@ class FragmentTrangChu : Fragment() {
         }
         hoanThanhVM.allMovie.observe(viewLifecycleOwner){
             binding?.rycFavorite?.adapter = TruyenAdapter(requireContext(), hoanThanhVM.allMovie.value?.allMovie ?: listOf())
+            binding?.viewPagerBanner?.adapter = BannerAdapter(requireContext(),ArrayList(hoanThanhVM.allMovie.value?.allMovie) ?: arrayListOf())
         }
         viewModel.allMoviePopular.observe(viewLifecycleOwner){
             binding?.rycPopular?.adapter = TruyenAdapter(requireContext(), viewModel.allMoviePopular.value?.allMovie ?: listOf())
