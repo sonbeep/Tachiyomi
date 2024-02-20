@@ -129,7 +129,6 @@ class FragmentChiTietPhim : Fragment(), CallBackGoToDetail {
                         }
                     })
                 }
-
             }
             binding.btnClose.setOnClickListener {
                 binding.ctrYoutube.visibility = View.GONE

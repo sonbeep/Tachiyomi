@@ -5,6 +5,8 @@ import org.koin.dsl.module
 import com.example.tachiyomi.viewmodel.TrangChuVM
 import com.example.tachiyomi.viewmodel.DaHoanThanhVM
 import com.example.tachiyomi.viewmodel.DetailMovieVM
+import com.example.tachiyomi.viewmodel.SearchVM
+
 
 
 
@@ -12,6 +14,7 @@ val viewModelModule = module {
     singleOf(::TrangChuVM)
     singleOf(::DaHoanThanhVM)
     singleOf(::DetailMovieVM)
+    singleOf(::SearchVM)
 
 
 }

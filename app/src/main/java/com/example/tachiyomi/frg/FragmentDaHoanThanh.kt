@@ -50,30 +50,13 @@ class FragmentDaHoanThanh : Fragment(), OnGoToDetail {
                 binding.btnBack.startAnimation(AnimationUtils.loadAnimation(requireContext(), androidx.appcompat.R.anim.abc_fade_in))
                 fragmentManager?.popBackStack()
             }
-            binding.btnThieuNhi.setOnClickListener {
-                viewModel.topic.value = 1
-            }
-            binding.btnKhac.setOnClickListener {
-                viewModel.topic.value = 0
-            }
+
         }
     }
 
     private fun listenLiveData() {
 
-        viewModel.topic.observe(viewLifecycleOwner) {
-            if (it == 1) {
-                binding?.btnThieuNhi?.background = resources.getDrawable(R.drawable.bg_hoan_thanh_vang)
-                binding?.btnKhac?.background = resources.getDrawable(R.drawable.bg_hoan_thanh_xam)
-                binding?.btnThieuNhi?.setTextColor(resources.getColor(R.color.yellow1))
-                binding?.btnKhac?.setTextColor(resources.getColor(R.color.khac))
-            } else if (it == 0) {
-                binding?.btnThieuNhi?.background = resources.getDrawable(R.drawable.bg_hoan_thanh_xam)
-                binding?.btnKhac?.background = resources.getDrawable(R.drawable.bg_hoan_thanh_vang)
-                binding?.btnThieuNhi?.setTextColor(resources.getColor(R.color.khac))
-                binding?.btnKhac?.setTextColor(resources.getColor(R.color.yellow1))
-            }
-        }
+
         viewModel.muc.observe(viewLifecycleOwner){ muc ->
             if (muc == 2){
                 viewModel.getAllMovieFavorite()

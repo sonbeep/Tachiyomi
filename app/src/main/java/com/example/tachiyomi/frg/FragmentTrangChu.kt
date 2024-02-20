@@ -51,20 +51,7 @@ class FragmentTrangChu : Fragment(), CallBackGoToDetail {
 
     private fun listenLiveData() {
 
-        viewModel.topic.observe(viewLifecycleOwner) {
-            if (it == 1) {
-                binding?.btnThieuNhi?.background = resources.getDrawable(R.drawable.bg_chu_de_vang)
-                binding?.btnKhac?.background = resources.getDrawable(R.drawable.bg_chu_de_xam)
-                binding?.btnThieuNhi?.setTextColor(resources.getColor(R.color.bg_topic))
-                binding?.btnKhac?.setTextColor(resources.getColor(R.color.khac))
-            } else if (it == 0) {
-                binding?.btnThieuNhi?.background = resources.getDrawable(R.drawable.bg_chu_de_xam)
-                binding?.btnKhac?.background = resources.getDrawable(R.drawable.bg_chu_de_vang)
 
-                binding?.btnThieuNhi?.setTextColor(resources.getColor(R.color.khac))
-                binding?.btnKhac?.setTextColor(resources.getColor(R.color.bg_topic))
-            }
-        }
         hoanThanhVM.allMovie.observe(viewLifecycleOwner){
             binding?.rycFavorite?.adapter = TruyenAdapter(requireContext(), hoanThanhVM.allMovie.value?.allMovie ?: listOf(),this)
             binding?.viewPagerBanner?.adapter = BannerAdapter(requireContext(),ArrayList(hoanThanhVM.allMovie.value?.allMovie) ?: arrayListOf())
@@ -85,12 +72,6 @@ class FragmentTrangChu : Fragment(), CallBackGoToDetail {
     private fun listenAppEvent() {
         binding?.let { binding ->
 
-            binding.btnThieuNhi.setOnClickListener {
-                viewModel.topic.value = 1
-            }
-            binding.btnKhac.setOnClickListener {
-                viewModel.topic.value = 0
-            }
             binding.btnDaHoanThanh.setOnClickListener {
                 hoanThanhVM.muc.value = 1
                 requireActivity().supportFragmentManager.beginTransaction()
@@ -106,14 +87,13 @@ class FragmentTrangChu : Fragment(), CallBackGoToDetail {
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.ln_main, FragmentDaHoanThanh()).addToBackStack("").commit()
             }
-            binding.btnTruyenKieuMoi.setOnClickListener {
+            binding.btnTimKiem.setOnClickListener {
                 hoanThanhVM.muc.value = 4
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.ln_main, FragmentDaHoanThanh()).addToBackStack("").commit()
             }
 
         }
-
 
     }
 

@@ -28,7 +28,7 @@ class DetailMovieVM: ViewModel() {
     var keyVideo = MutableLiveData<String>()
 
     fun getDetailMovie(movieId: Int){
-        val call: Call<DetailMovie> = apiService?.getDetailMovie("/3/movie/$movieId?api_key=e9e9d8da18ae29fc430845952232787c&append_to_response=videos")!!
+        val call: Call<DetailMovie> = apiService?.getDetailMovie("/3/movie/$movieId?api_key=e9e9d8da18ae29fc430845952232787c&append_to_response=videos&language=vi")!!
         call.enqueue(object : Callback<DetailMovie>{
             override fun onResponse(call: Call<DetailMovie>, response: Response<DetailMovie>) {
                 if (response.isSuccessful){
@@ -65,7 +65,7 @@ class DetailMovieVM: ViewModel() {
     }
 
     fun getListSimilarMovie(movieId: Int){
-        val call: Call<AllMovie> = apiService?.getListSimilarMovie("/3/movie/$movieId/similar?api_key=e9e9d8da18ae29fc430845952232787c&language=en-US&page=1")!!
+        val call: Call<AllMovie> = apiService?.getListSimilarMovie("/3/movie/$movieId/similar?api_key=e9e9d8da18ae29fc430845952232787c&language=vi&page=1")!!
         call.enqueue(object : Callback<AllMovie>{
             override fun onResponse(call: Call<AllMovie>, response: Response<AllMovie>) {
                 if (response.isSuccessful){

@@ -29,8 +29,7 @@ class DaHoanThanhAdapter(val context: Context, val list: List<Movie>, private va
     override fun onBindViewHolder(holder: DaHoanThanhViewHolder, position: Int) {
         val movie = list[position]
         holder.binding.title.text = movie.title
-        holder.binding.tvView.text = movie.voteCount.toString()
-        holder.binding.tvView2.text = movie.voteCount.toString()
+        holder.binding.tvView2.text = movie.releaseDate.toString()
         Glide.with(context).load("https://image.tmdb.org/t/p/original/"+movie.posterPath).into(holder.binding.poster)
         holder.binding.llContainer.setOnClickListener{
             holder.binding.llContainer.startAnimation(AnimationUtils.loadAnimation(context, R.anim.abc_fade_in))

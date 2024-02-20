@@ -12,16 +12,16 @@ import retrofit2.http.Query
 import retrofit2.http.Url
 
 interface APIService {
-    @GET("/3/movie/now_playing?api_key=e9e9d8da18ae29fc430845952232787c&language=en-US&page=1")
+    @GET("/3/trending/movie/day?api_key=e9e9d8da18ae29fc430845952232787c&language=vi")
     fun getAllMovieFavorite(): Call<AllMovie>
 
-    @GET("/3/movie/popular?api_key=e9e9d8da18ae29fc430845952232787c&language=en-US&page=1")
+    @GET("/3/movie/popular?api_key=e9e9d8da18ae29fc430845952232787c&language=vi&page=1")
     fun getAllMoviePopular(): Call<AllMovie>
 
-    @GET("/3/movie/upcoming?api_key=e9e9d8da18ae29fc430845952232787c&language=en-US&page=1")
+    @GET("/3/movie/upcoming?api_key=e9e9d8da18ae29fc430845952232787c&language=vi&page=1")
     fun getAllMovieUpComing(): Call<AllMovie>
 
-    @GET("/3/movie/top_rated?api_key=e9e9d8da18ae29fc430845952232787c&language=en-US&page=1")
+    @GET("/3/movie/top_rated?api_key=e9e9d8da18ae29fc430845952232787c&language=vi&page=1")
     fun getAllMovieTopRate(): Call<AllMovie>
 
 //    @GET("/3/movie/933131?api_key=e9e9d8da18ae29fc430845952232787c&append_to_response=videos")
@@ -43,6 +43,9 @@ interface APIService {
     ) : Call<Cast>
 
 
-    @GET("/3/genre/movie/list?api_key=df15a04d63ef140e3fcf60ed11d270a1&language=en-US")
+    @GET("/3/genre/movie/list?api_key=df15a04d63ef140e3fcf60ed11d270a1&language=vi")
     fun getGenre() : Call<ListTheLoai>
+
+    @GET
+    fun getSearch(@Url url: String) : Call<AllMovie>
 }

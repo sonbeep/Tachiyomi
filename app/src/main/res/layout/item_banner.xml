@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:src="@drawable/truyen"
-        android:scaleType="fitXY"
-        android:background="@drawable/bg_hoan_thanh_vang"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ivBanner"/>
+        app:cardBackgroundColor="@color/yellow1"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="10dp">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="10dp">
+            <ImageView
+                android:src="@drawable/truyen"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:id="@+id/ivBanner"/>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
+
+
 
 </LinearLayout>

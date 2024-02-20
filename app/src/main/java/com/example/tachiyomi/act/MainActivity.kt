@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.tachiyomi.R
 import com.example.tachiyomi.databinding.ActivityMainBinding
+import com.example.tachiyomi.frg.FragmentSearch
 import com.example.tachiyomi.frg.FragmentTrangChu
 import com.example.tachiyomi.frg.FragmentTruyenKieuMoi
 import com.example.tachiyomi.frg.FragmentTuTruyen
@@ -36,8 +37,8 @@ class MainActivity : AppCompatActivity() {
             if (it == 1) {
                 binding?.bottomSheet?.btnTrangChu?.visibility = View.GONE
                 binding?.bottomSheet?.btnTrangChuCheck?.visibility = View.VISIBLE
-                binding?.bottomSheet?.btnTruyenKieuMoi?.visibility = View.VISIBLE
-                binding?.bottomSheet?.btnTruyenKieuMoiCheck?.visibility = View.GONE
+                binding?.bottomSheet?.btnTimKiem?.visibility = View.VISIBLE
+                binding?.bottomSheet?.btnTimKiemCheck?.visibility = View.GONE
                 binding?.bottomSheet?.btnTuTruyen?.visibility = View.VISIBLE
                 binding?.bottomSheet?.btnTuTruyenCheck?.visibility = View.GONE
                 binding?.bottomSheet?.tvTrangChu?.setTextColor(resources.getColor(R.color.yellow1))
@@ -47,19 +48,19 @@ class MainActivity : AppCompatActivity() {
             } else if (it == 2) {
                 binding?.bottomSheet?.btnTrangChu?.visibility = View.VISIBLE
                 binding?.bottomSheet?.btnTrangChuCheck?.visibility = View.GONE
-                binding?.bottomSheet?.btnTruyenKieuMoi?.visibility = View.GONE
-                binding?.bottomSheet?.btnTruyenKieuMoiCheck?.visibility = View.VISIBLE
+                binding?.bottomSheet?.btnTimKiem?.visibility = View.GONE
+                binding?.bottomSheet?.btnTimKiemCheck?.visibility = View.VISIBLE
                 binding?.bottomSheet?.btnTuTruyen?.visibility = View.VISIBLE
                 binding?.bottomSheet?.btnTuTruyenCheck?.visibility = View.GONE
                 binding?.bottomSheet?.tvTrangChu?.setTextColor(resources.getColor(R.color.bottom))
                 binding?.bottomSheet?.tvTruyenKieuMoi?.setTextColor(resources.getColor(R.color.yellow1))
                 binding?.bottomSheet?.tvTuTruyen?.setTextColor(resources.getColor(R.color.bottom))
-                supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentTruyenKieuMoi()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentSearch()).commit()
             } else if (it == 3) {
                 binding?.bottomSheet?.btnTrangChu?.visibility = View.VISIBLE
                 binding?.bottomSheet?.btnTrangChuCheck?.visibility = View.GONE
-                binding?.bottomSheet?.btnTruyenKieuMoi?.visibility = View.VISIBLE
-                binding?.bottomSheet?.btnTruyenKieuMoiCheck?.visibility = View.GONE
+                binding?.bottomSheet?.btnTimKiem?.visibility = View.VISIBLE
+                binding?.bottomSheet?.btnTimKiemCheck?.visibility = View.GONE
                 binding?.bottomSheet?.btnTuTruyen?.visibility = View.GONE
                 binding?.bottomSheet?.btnTuTruyenCheck?.visibility = View.VISIBLE
                 binding?.bottomSheet?.tvTrangChu?.setTextColor(resources.getColor(R.color.bottom))

@@ -27,7 +27,7 @@ class BannerAdapter(private val context: Context, private val listImage : ArrayL
 
     override fun onBindViewHolder(holder: BannerViewHolder, position: Int) {
         val movie = listImage[position]
-        Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movie.posterPath).into(holder.binding.ivBanner)
+        Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movie.backdropPath).into(holder.binding.ivBanner)
 
     }
 }

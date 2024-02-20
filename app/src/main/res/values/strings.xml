@@ -13,4 +13,6 @@
     <string name="tu_truyen">Tủ truyện</string>
     <string name="phim_tuong_tu">Phim tương tự</string>
     <string name="dien_vien">Diễn Viên</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="theloai">Thể loại</string>
 </resources>

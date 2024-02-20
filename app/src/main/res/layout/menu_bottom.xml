@@ -39,24 +39,25 @@
         android:orientation="vertical"
         android:layout_weight="1">
         <ImageView
-            android:id="@+id/btnTruyenKieuMoi"
+            android:id="@+id/btnTimKiem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_truyen_kieu_moi"
+            android:src="@drawable/ic_search"
             android:layout_gravity="center"/>
         <ImageView
-            android:id="@+id/btnTruyenKieuMoiCheck"
+            android:id="@+id/btnTimKiemCheck"
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_truyen_kieu_moi_check"
+            android:src="@drawable/ic_search_check"
             android:layout_gravity="center"/>
         <TextView
+            android:layout_marginTop="5dp"
             android:id="@+id/tvTruyenKieuMoi"
             android:textColor="@color/bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/truyen_kieu_moi"
+            android:text="@string/search"
             android:gravity="center"/>
     </LinearLayout>
     <LinearLayout
@@ -83,7 +84,7 @@
             android:textColor="@color/bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/tu_truyen"
+            android:text="@string/theloai"
             android:gravity="center"/>
     </LinearLayout>
 
