@@ -24,6 +24,7 @@ class GenreAdapter(val context: Context, val list: List<TheLoai>): Adapter<Genre
     }
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
-
+        val theLoai = list[position]
+        holder.binding.tvTheLoai.text = theLoai.name
     }
 }

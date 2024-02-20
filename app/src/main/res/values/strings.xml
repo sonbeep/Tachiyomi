@@ -11,4 +11,6 @@
     <string name="noi_dung_vua_xem">Nội dung vừa xem</string>
     <string name="trang_chu">Trang chủ</string>
     <string name="tu_truyen">Tủ truyện</string>
+    <string name="phim_tuong_tu">Phim tương tự</string>
+    <string name="dien_vien">Diễn Viên</string>
 </resources>

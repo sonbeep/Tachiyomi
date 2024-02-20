@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.tachiyomi.databinding.ItemTruyenBinding
 import com.example.tachiyomi.model.Movie
 
-class TruyenAdapter(val context: Context, val list: List<Movie>) : Adapter<TruyenAdapter.TruyenViewHolder>() {
+class TruyenAdapter(val context: Context, val list: List<Movie>, val callback: CallBackGoToDetail) : Adapter<TruyenAdapter.TruyenViewHolder>() {
     class TruyenViewHolder(val binding: ItemTruyenBinding) : ViewHolder(binding.root){
 
     }
@@ -26,5 +26,11 @@ class TruyenAdapter(val context: Context, val list: List<Movie>) : Adapter<Truye
     override fun onBindViewHolder(holder: TruyenViewHolder, position: Int) {
         val movie = list[position]
         Glide.with(context).load("https://image.tmdb.org/t/p/original/"+movie.posterPath).into(holder.binding.ivTruyen)
+        holder.binding.ivTruyen.setOnClickListener {
+            callback.goToDetail(movie.id)
+        }
     }
+}
+interface CallBackGoToDetail{
+    fun goToDetail(movieId: Int)
 }

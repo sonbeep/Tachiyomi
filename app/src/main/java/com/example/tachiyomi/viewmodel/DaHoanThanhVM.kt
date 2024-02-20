@@ -14,6 +14,7 @@ class DaHoanThanhVM : ViewModel() {
     val topic = MutableLiveData<Int>()
     val allMovie = MutableLiveData<AllMovie>()
     val mess = MutableLiveData<String>()
+    val muc = MutableLiveData<Int>()
 
     fun getAllMovieFavorite(){
         val call: Call<AllMovie> = apiService?.getAllMovieFavorite()!!

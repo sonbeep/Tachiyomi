@@ -13,12 +13,14 @@ import com.example.tachiyomi.adapter.OnGoToDetail
 import com.example.tachiyomi.databinding.FrgDaHoanThanhBinding
 import com.example.tachiyomi.viewmodel.DaHoanThanhVM
 import com.example.tachiyomi.viewmodel.DetailMovieVM
+import com.example.tachiyomi.viewmodel.TrangChuVM
 import org.koin.android.ext.android.inject
 
 class FragmentDaHoanThanh : Fragment(), OnGoToDetail {
     private var binding : FrgDaHoanThanhBinding? = null
     val viewModel : DaHoanThanhVM by inject<DaHoanThanhVM>()
     val viewModelDetail : DetailMovieVM by inject<DetailMovieVM>()
+    val trangChuVM : TrangChuVM by inject<TrangChuVM>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,14 +41,14 @@ class FragmentDaHoanThanh : Fragment(), OnGoToDetail {
     }
 
     private fun setUpUI() {
-        viewModel.getAllMovieFavorite()
+
     }
 
     private fun listenAppEvent() {
         binding?.let { binding ->
             binding.btnBack.setOnClickListener {
                 binding.btnBack.startAnimation(AnimationUtils.loadAnimation(requireContext(), androidx.appcompat.R.anim.abc_fade_in))
-                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentTrangChu()).commit()
+                fragmentManager?.popBackStack()
             }
             binding.btnThieuNhi.setOnClickListener {
                 viewModel.topic.value = 1
@@ -72,14 +74,35 @@ class FragmentDaHoanThanh : Fragment(), OnGoToDetail {
                 binding?.btnKhac?.setTextColor(resources.getColor(R.color.yellow1))
             }
         }
-        viewModel.allMovie.observe(viewLifecycleOwner){
-            binding?.rycDaHoanThanh?.adapter = DaHoanThanhAdapter(requireContext(), viewModel.allMovie.value?.allMovie ?: listOf(), this)
-        }
+        viewModel.muc.observe(viewLifecycleOwner){ muc ->
+            if (muc == 2){
+                viewModel.getAllMovieFavorite()
+                viewModel.allMovie.observe(viewLifecycleOwner){
+                    binding?.rycDaHoanThanh?.adapter = DaHoanThanhAdapter(requireContext(), viewModel.allMovie.value?.allMovie ?: listOf(), this)
+                }
+            }else if (muc == 1){
+                trangChuVM.getAllMoviePopular()
+                trangChuVM.allMoviePopular.observe(viewLifecycleOwner){
+                    binding?.rycDaHoanThanh?.adapter = DaHoanThanhAdapter(requireContext(), trangChuVM.allMoviePopular.value?.allMovie ?: listOf(), this)
+                }
+            }else if (muc == 3){
+                trangChuVM.getAllMovieTopRate()
+                trangChuVM.allMovieTopRate.observe(viewLifecycleOwner){
+                    binding?.rycDaHoanThanh?.adapter = DaHoanThanhAdapter(requireContext(), trangChuVM.allMovieTopRate.value?.allMovie ?: listOf(), this)
+                }
 
+            }else if (muc == 4){
+                trangChuVM.getAllMovieUpComing()
+                trangChuVM.allMovieUpComing.observe(viewLifecycleOwner){
+                    binding?.rycDaHoanThanh?.adapter = DaHoanThanhAdapter(requireContext(), trangChuVM.allMovieUpComing.value?.allMovie ?: listOf(), this)
+
+                }
+            }
+        }
     }
 
     override fun onClickDetail(movieId: Int) {
         viewModelDetail.movieId.value = movieId
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentChiTietPhim()).commit()
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentChiTietPhim()).addToBackStack("").commit()
     }
 }

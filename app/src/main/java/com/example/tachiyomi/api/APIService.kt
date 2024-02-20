@@ -1,6 +1,7 @@
 package com.example.tachiyomi.api
 
 import com.example.tachiyomi.model.AllMovie
+import com.example.tachiyomi.model.Cast
 import com.example.tachiyomi.model.DetailMovie
 import com.example.tachiyomi.model.ListTheLoai
 import com.example.tachiyomi.model.TheLoai
@@ -30,6 +31,16 @@ interface APIService {
     fun getDetailMovie(
         @Url url: String
     ) : Call<DetailMovie>
+
+    @GET
+    fun getListSimilarMovie(
+        @Url url: String
+    ) : Call<AllMovie>
+
+    @GET
+    fun getActor(
+        @Url url: String
+    ) : Call<Cast>
 
 
     @GET("/3/genre/movie/list?api_key=df15a04d63ef140e3fcf60ed11d270a1&language=en-US")
