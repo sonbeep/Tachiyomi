@@ -1,6 +1,7 @@
 package com.example.tachiyomi.frg
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +16,17 @@ import com.example.tachiyomi.viewmodel.DaHoanThanhVM
 import com.example.tachiyomi.viewmodel.DetailMovieVM
 import com.example.tachiyomi.viewmodel.TrangChuVM
 import org.koin.android.ext.android.inject
+import java.util.Timer
+import java.util.TimerTask
 
 class FragmentTrangChu : Fragment(), CallBackGoToDetail {
     var binding: FrgTrangChuBinding? = null
     val viewModel : TrangChuVM by inject<TrangChuVM> ()
     val hoanThanhVM: DaHoanThanhVM by inject<DaHoanThanhVM>()
     val viewModelDetail: DetailMovieVM by inject<DetailMovieVM>()
+    private val handler = Handler()
+    private var currentPage = 0
+    private val delay: Long = 3000
 
 
     override fun onCreateView(
@@ -47,6 +53,18 @@ class FragmentTrangChu : Fragment(), CallBackGoToDetail {
         viewModel.getAllMoviePopular()
         viewModel.getAllMovieTopRate()
         viewModel.getAllMovieUpComing()
+
+        val timer = Timer()
+        timer.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post {
+                    if (currentPage == hoanThanhVM.allMovie.value?.allMovie?.size) {
+                        currentPage = 0
+                    }
+                    binding?.viewPagerBanner?.setCurrentItem(currentPage++, true)
+                }
+            }
+        }, 0, delay)
     }
 
     private fun listenLiveData() {
@@ -93,8 +111,8 @@ class FragmentTrangChu : Fragment(), CallBackGoToDetail {
                     .replace(R.id.ln_main, FragmentDaHoanThanh()).addToBackStack("").commit()
             }
 
-        }
 
+        }
     }
 
     override fun goToDetail(movieId: Int) {

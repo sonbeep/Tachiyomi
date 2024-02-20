@@ -7,14 +7,12 @@
         android:id="@+id/ivProfilePath"
         android:layout_width="132dp"
         android:layout_height="193dp"
-        android:src="@drawable/truyen"
         android:layout_marginStart="10dp"/>
     <TextView
         android:id="@+id/tvName"
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dien vien"
         android:gravity="center"
         android:textSize="14sp"
         android:textColor="@color/white"/>

@@ -35,15 +35,15 @@ class TopMovieAdapter(val context: Context, val list : List<Movie>, val callBack
         holder.binding.llContainer.setOnClickListener {
             callBack.fromTopToDetail(search.id)
         }
-//        if (position == 0){
-//            holder.binding.ivTop.setImageResource(R.drawable.ic_top1)
-//        }else if (position == 1){
-//            holder.binding.ivTop.setImageResource(R.drawable.ic_top2)
-//        }else if (position == 2){
-//            holder.binding.ivTop.setImageResource(R.drawable.ic_top3)
-//        }else{
-//            holder.binding.ivTop.visibility = View.GONE
-//        }
+        if (position == 0){
+            holder.binding.ivTop.setImageResource(R.drawable.ic_top1)
+        }else if (position == 1){
+            holder.binding.ivTop.setImageResource(R.drawable.ic_top2)
+        }else if (position == 2){
+            holder.binding.ivTop.setImageResource(R.drawable.ic_top3)
+        }else{
+            holder.binding.ivTop.visibility = View.GONE
+        }
     }
 }
 

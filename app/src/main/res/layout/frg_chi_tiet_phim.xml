@@ -7,38 +7,7 @@
     android:background="@color/black"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="gone"
-        android:id="@+id/ctrYoutube"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
-            android:id="@+id/btnClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-            android:id="@+id/youtube_player_view"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-
-            app:autoPlay="false"
-            app:enableAutomaticInitialization="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ScrollView
@@ -65,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/banner" />
+                     />
 
                 <View
                     android:layout_width="match_parent"
@@ -95,8 +64,7 @@
                         android:layout_width="100dp"
                         android:layout_height="160dp"
                         android:background="@drawable/bg_poster"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/truyen" />
+                        android:scaleType="centerCrop" />
                 </androidx.cardview.widget.CardView>
             </FrameLayout>
 
@@ -113,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="dddddd"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
@@ -123,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:fontFamily="@font/roboto_regular"
-                    android:text="dddddd"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="20sp" />
             </LinearLayout>
@@ -249,7 +217,6 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/roboto_regular"
                 android:maxLines="5"
-                android:text="dddddd"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
@@ -278,11 +245,6 @@
                         android:textColor="@color/danh_muc"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tat_ca"
-                        android:textColor="@color/tat_ca" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -321,11 +283,6 @@
                         android:textColor="@color/danh_muc"
                         android:textSize="18sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tat_ca"
-                        android:textColor="@color/tat_ca" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView

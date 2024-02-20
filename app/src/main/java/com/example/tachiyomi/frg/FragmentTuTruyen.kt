@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.tachiyomi.R
 import com.example.tachiyomi.adapter.TopMovieAdapter
 import com.example.tachiyomi.adapter.TopToDetail
 import com.example.tachiyomi.databinding.FrgTuTruyenBinding
+import com.example.tachiyomi.viewmodel.DetailMovieVM
 import com.example.tachiyomi.viewmodel.TrangChuVM
 import org.koin.android.ext.android.inject
 
 class FragmentTuTruyen: Fragment(), TopToDetail {
     private var binding: FrgTuTruyenBinding? = null
     val viewModel: TrangChuVM by inject<TrangChuVM>()
+    val viewModelDetail: DetailMovieVM by inject<DetailMovieVM>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,6 +51,7 @@ class FragmentTuTruyen: Fragment(), TopToDetail {
     }
 
     override fun fromTopToDetail(movieId: Int) {
-
+        viewModelDetail.movieId.value = movieId
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentChiTietPhim()).addToBackStack("").commit()
     }
 }

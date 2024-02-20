@@ -84,7 +84,7 @@
             android:textColor="@color/bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/theloai"
+            android:text="@string/bang_xep_hang"
             android:gravity="center"/>
     </LinearLayout>
 

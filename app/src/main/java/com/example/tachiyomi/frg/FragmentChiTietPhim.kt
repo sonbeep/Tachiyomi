@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import com.bumptech.glide.Glide
+import com.example.tachiyomi.R
 import com.example.tachiyomi.adapter.CallBackGoToDetail
 import com.example.tachiyomi.adapter.DienVienAdapter
 import com.example.tachiyomi.adapter.GenreAdapter
@@ -111,32 +112,7 @@ class FragmentChiTietPhim : Fragment(), CallBackGoToDetail {
                 fragmentManager?.popBackStack()
             }
             binding.btnPlayTrailer.setOnClickListener {
-                binding.ctrYoutube.visibility = View.VISIBLE
-                binding.scContainer.visibility = View.GONE
-                viewModel.detailMovie.observe(viewLifecycleOwner) {
-                    binding.youtubePlayerView.addYouTubePlayerListener(object :
-                        AbstractYouTubePlayerListener() {
-                        override fun onReady(youTubePlayer: YouTubePlayer) {
-                            viewModel.keyVideo.observe(viewLifecycleOwner) {
-                                runBlocking {
-                                    delay(2000)
-                                    youTubePlayer.loadVideo(
-                                        viewModel.keyVideo.value?.toString() ?: "",
-                                        0f
-                                    )
-                                }
-                            }
-                        }
-                    })
-                }
-            }
-            binding.btnClose.setOnClickListener {
-                binding.ctrYoutube.visibility = View.GONE
-                binding.scContainer.visibility = View.VISIBLE
-                val tracker = YouTubePlayerTracker()
-                binding.youtubePlayerView.enableBackgroundPlayback(false)
-
-//                binding.youtubePlayerView.onStateChanged(viewLifecycleOwner, Lifecycle.Event.ON_STOP)
+                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentTrailer()).commit()
             }
         }
     }
