@@ -13,7 +13,7 @@ import com.example.tachiyomi.viewmodel.DetailMovieVM
 import com.example.tachiyomi.viewmodel.TrangChuVM
 import org.koin.android.ext.android.inject
 
-class FragmentTuTruyen: Fragment(), TopToDetail {
+class FragmentXepHang: Fragment(), TopToDetail {
     private var binding: FrgTuTruyenBinding? = null
     val viewModel: TrangChuVM by inject<TrangChuVM>()
     val viewModelDetail: DetailMovieVM by inject<DetailMovieVM>()

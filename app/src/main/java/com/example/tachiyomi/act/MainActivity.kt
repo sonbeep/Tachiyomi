@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.Window
-import android.widget.TextView
-import android.widget.Toast
 import com.example.tachiyomi.R
 import com.example.tachiyomi.databinding.ActivityMainBinding
 import com.example.tachiyomi.frg.FragmentSearch
 import com.example.tachiyomi.frg.FragmentTrangChu
-import com.example.tachiyomi.frg.FragmentTruyenKieuMoi
-import com.example.tachiyomi.frg.FragmentTuTruyen
+import com.example.tachiyomi.frg.FragmentXepHang
 import com.example.tachiyomi.viewmodel.TrangChuVM
 import org.koin.android.ext.android.inject
 
@@ -72,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                 binding?.bottomSheet?.tvTrangChu?.setTextColor(resources.getColor(R.color.bottom))
                 binding?.bottomSheet?.tvTruyenKieuMoi?.setTextColor(resources.getColor(R.color.bottom))
                 binding?.bottomSheet?.tvTuTruyen?.setTextColor(resources.getColor(R.color.yellow1))
-                supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentTuTruyen()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentXepHang()).commit()
             }
         }
     }

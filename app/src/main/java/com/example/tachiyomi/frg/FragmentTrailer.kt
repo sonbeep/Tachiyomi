@@ -35,34 +35,34 @@ class FragmentTrailer : Fragment() {
     }
 
     private fun setUpUI() {
+        viewModel.getDetailMovie(viewModel.movieId.value ?: 0)
+        binding?.wvTrailer?.settings?.javaScriptEnabled = true
+        viewModel.detailMovie.observe(viewLifecycleOwner){
+            for (list in viewModel.detailMovie.value?.videos?.trailer ?: listOf()){
+                if (list.type == "Trailer"){
+                    binding?.wvTrailer?.loadUrl("https://www.youtube.com/watch?v=${list.key}")
+                }
+            }
+        }
+
+        binding?.key?.setOnClickListener {
+            viewModel.detailMovie.observe(viewLifecycleOwner){
+                for (list in viewModel.detailMovie.value?.videos?.trailer ?: listOf()){
+                    if (list.type == "Trailer"){
+                        viewModel.keyVideo.value = list.key
+                        binding?.wvTrailer?.loadUrl("https://www.youtube.com/watch?v=${list.key}")
+                    }
+                }
+            }
+        }
 
     }
 
     private fun listenAppEvent() {
-        binding?.btnClose?.setOnClickListener {
-            fragmentManager?.popBackStack()
-        }
 
     }
 
     private fun listentLiveData() {
-        viewModel.detailMovie.observe(viewLifecycleOwner) {
-            binding?.youtubePlayerView?.addYouTubePlayerListener(object :
-                AbstractYouTubePlayerListener() {
-                override fun onReady(youTubePlayer: YouTubePlayer) {
 
-                    for (list in viewModel.detailMovie.value?.videos?.trailer ?: listOf()) {
-                        if (list.type == "Trailer") {
-                            Toast.makeText(context, list.key.toString(), Toast.LENGTH_SHORT).show()
-                            youTubePlayer.loadVideo(
-                                list.key,
-                                0f
-                            )
-                        }
-                    }
-
-                }
-            })
-        }
     }
 }
