@@ -24,8 +24,7 @@ interface APIService {
     @GET("/3/movie/top_rated?api_key=e9e9d8da18ae29fc430845952232787c&language=vi&page=1")
     fun getAllMovieTopRate(): Call<AllMovie>
 
-//    @GET("/3/movie/933131?api_key=e9e9d8da18ae29fc430845952232787c&append_to_response=videos")
-//    fun getDetailMovie() : Call<DetailMovie>
+
 
     @GET
     fun getDetailMovie(
@@ -41,10 +40,6 @@ interface APIService {
     fun getActor(
         @Url url: String
     ) : Call<Cast>
-
-
-    @GET("/3/genre/movie/list?api_key=df15a04d63ef140e3fcf60ed11d270a1&language=vi")
-    fun getGenre() : Call<ListTheLoai>
 
     @GET
     fun getSearch(@Url url: String) : Call<AllMovie>

@@ -18,4 +18,8 @@
     <string name="duoc_yeu_thich">Được yêu thích</string>
     <string name="phim_chieu_rap">Phim chiếu rạp</string>
     <string name="danh_gia_cao">Đánh giá cao</string>
+    <string name="error_lost_internet">Không có kết nối mạng</string>
+    <string name="error_server_message">Lỗi kết nối đến máy chủ</string>
+    <string name="error_request_timeout">Quá thời gian yêu cầu</string>
+    <string name="error_some_thing_wrong">Xảy ra lỗi vui lòng thử lại</string>
 </resources>

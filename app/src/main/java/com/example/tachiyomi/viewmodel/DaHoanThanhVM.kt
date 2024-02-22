@@ -2,34 +2,23 @@ package com.example.tachiyomi.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tachiyomi.api.APIService
-import com.example.tachiyomi.api.RetrofitClient
+import androidx.lifecycle.viewModelScope
 import com.example.tachiyomi.model.AllMovie
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.tachiyomi.model.app_util.whenLeftRight
+import com.example.tachiyomi.repository.HoanThanhRepository
+import kotlinx.coroutines.launch
 
-class DaHoanThanhVM : ViewModel() {
-    val apiService = RetrofitClient.getClient()?.create(APIService::class.java)
-    val topic = MutableLiveData<Int>()
+class DaHoanThanhVM(private val hoanThanhRepository: HoanThanhRepository) : ViewModel() {
     val allMovie = MutableLiveData<AllMovie>()
-    val mess = MutableLiveData<String>()
     val muc = MutableLiveData<Int>()
 
-    fun getAllMovieFavorite(){
-        val call: Call<AllMovie> = apiService?.getAllMovieFavorite()!!
-        call.enqueue(object : Callback<AllMovie>{
-            override fun onResponse(call: Call<AllMovie>, response: Response<AllMovie>) {
-                if (response.isSuccessful){
-                    allMovie.value = response.body()
-                }
+    fun getAllMovieFavorite() = viewModelScope.launch {
+        val response = hoanThanhRepository.getAllMovieFavorite()
+        response.whenLeftRight(
+            {}, {
+                allMovie.value = it
             }
-
-            override fun onFailure(call: Call<AllMovie>, t: Throwable) {
-                    mess.value = t.message
-            }
-
-        })
+        )
     }
 
 

@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tachiyomi.databinding.FrgTruyenKieuMoiBinding
 
-class FragmentTruyenKieuMoi: Fragment() {
-    private var binding : FrgTruyenKieuMoiBinding? = null
+class FragmentTruyenKieuMoi : Fragment() {
+    private var binding: FrgTruyenKieuMoiBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

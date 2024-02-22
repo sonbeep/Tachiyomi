@@ -2,15 +2,13 @@ package com.example.tachiyomi.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tachiyomi.api.APIService
-import com.example.tachiyomi.api.RetrofitClient
+import androidx.lifecycle.viewModelScope
 import com.example.tachiyomi.model.AllMovie
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.tachiyomi.model.app_util.whenLeftRight
+import com.example.tachiyomi.repository.TrangChuRepository
+import kotlinx.coroutines.launch
 
-class TrangChuVM : ViewModel() {
-    val apiService = RetrofitClient.getClient()?.create(APIService::class.java)
+class TrangChuVM(private val trangChuRepository: TrangChuRepository) : ViewModel() {
     val topic = MutableLiveData<Int>()
     val bottomSheetStatus = MutableLiveData<Int>()
     val allMoviePopular = MutableLiveData<AllMovie>()
@@ -18,49 +16,29 @@ class TrangChuVM : ViewModel() {
     val allMovieTopRate = MutableLiveData<AllMovie>()
 
 
-    fun getAllMoviePopular(){
-        val call: Call<AllMovie> = apiService?.getAllMoviePopular()!!
-        call.enqueue(object : Callback<AllMovie> {
-            override fun onResponse(call: Call<AllMovie>, response: Response<AllMovie>) {
-                if (response.isSuccessful){
-                    allMoviePopular.value = response.body()
-                }
+    fun getAllMoviePopular() = viewModelScope.launch {
+        val response = trangChuRepository.getAllMoviePopular()
+        response.whenLeftRight(
+            {}, {
+                allMoviePopular.value = it
             }
-
-            override fun onFailure(call: Call<AllMovie>, t: Throwable) {
-            }
-
-        })
+        )
     }
-
-    fun getAllMovieUpComing(){
-        val call: Call<AllMovie> = apiService?.getAllMovieUpComing()!!
-        call.enqueue(object : Callback<AllMovie> {
-            override fun onResponse(call: Call<AllMovie>, response: Response<AllMovie>) {
-                if (response.isSuccessful){
-                    allMovieUpComing.value = response.body()
-                }
+    fun getAllMovieUpComing() = viewModelScope.launch {
+        val response = trangChuRepository.getAllMovieUpComing()
+        response.whenLeftRight(
+            {}, {
+                allMovieUpComing.value = it
             }
-
-            override fun onFailure(call: Call<AllMovie>, t: Throwable) {
-            }
-
-        })
+        )
     }
-
-    fun getAllMovieTopRate(){
-        val call: Call<AllMovie> = apiService?.getAllMovieTopRate()!!
-        call.enqueue(object : Callback<AllMovie> {
-            override fun onResponse(call: Call<AllMovie>, response: Response<AllMovie>) {
-                if (response.isSuccessful){
-                    allMovieTopRate.value = response.body()
-                }
+    fun getAllMovieTopRate() = viewModelScope.launch {
+        val response = trangChuRepository.getAllMovieTopRate()
+        response.whenLeftRight(
+            {}, {
+                allMovieTopRate.value = it
             }
-
-            override fun onFailure(call: Call<AllMovie>, t: Throwable) {
-            }
-
-        })
+        )
     }
 
 }

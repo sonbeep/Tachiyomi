@@ -35,7 +35,7 @@ class FragmentTrailer : Fragment() {
     }
 
     private fun setUpUI() {
-        viewModel.getDetailMovie(viewModel.movieId.value ?: 0)
+//        viewModel.getDetailMovie(viewModel.movieId.value ?: 0)
         binding?.wvTrailer?.settings?.javaScriptEnabled = true
         viewModel.detailMovie.observe(viewLifecycleOwner){
             for (list in viewModel.detailMovie.value?.videos?.trailer ?: listOf()){

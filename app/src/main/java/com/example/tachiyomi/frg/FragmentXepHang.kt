@@ -13,7 +13,7 @@ import com.example.tachiyomi.viewmodel.DetailMovieVM
 import com.example.tachiyomi.viewmodel.TrangChuVM
 import org.koin.android.ext.android.inject
 
-class FragmentXepHang: Fragment(), TopToDetail {
+class FragmentXepHang : Fragment(), TopToDetail {
     private var binding: FrgTuTruyenBinding? = null
     val viewModel: TrangChuVM by inject<TrangChuVM>()
     val viewModelDetail: DetailMovieVM by inject<DetailMovieVM>()
@@ -45,13 +45,18 @@ class FragmentXepHang: Fragment(), TopToDetail {
     }
 
     private fun listenLiveData() {
-        viewModel.allMovieTopRate.observe(viewLifecycleOwner){
-            binding?.rycTop?.adapter = TopMovieAdapter(requireContext(), viewModel.allMovieTopRate.value?.allMovie ?: listOf(), this)
+        viewModel.allMovieTopRate.observe(viewLifecycleOwner) {
+            binding?.rycTop?.adapter = TopMovieAdapter(
+                requireContext(),
+                viewModel.allMovieTopRate.value?.allMovie ?: listOf(),
+                this
+            )
         }
     }
 
     override fun fromTopToDetail(movieId: Int) {
         viewModelDetail.movieId.value = movieId
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentChiTietPhim()).addToBackStack("").commit()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.ln_main, FragmentChiTietPhim()).addToBackStack("").commit()
     }
 }

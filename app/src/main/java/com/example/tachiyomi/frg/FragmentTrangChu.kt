@@ -21,7 +21,7 @@ import java.util.TimerTask
 
 class FragmentTrangChu : Fragment(), CallBackGoToDetail {
     var binding: FrgTrangChuBinding? = null
-    val viewModel : TrangChuVM by inject<TrangChuVM> ()
+    val viewModel: TrangChuVM by inject<TrangChuVM>()
     val hoanThanhVM: DaHoanThanhVM by inject<DaHoanThanhVM>()
     val viewModelDetail: DetailMovieVM by inject<DetailMovieVM>()
     private val handler = Handler()
@@ -70,18 +70,37 @@ class FragmentTrangChu : Fragment(), CallBackGoToDetail {
     private fun listenLiveData() {
 
 
-        hoanThanhVM.allMovie.observe(viewLifecycleOwner){
-            binding?.rycFavorite?.adapter = TruyenAdapter(requireContext(), hoanThanhVM.allMovie.value?.allMovie ?: listOf(),this)
-            binding?.viewPagerBanner?.adapter = BannerAdapter(requireContext(),ArrayList(hoanThanhVM.allMovie.value?.allMovie) ?: arrayListOf())
+        hoanThanhVM.allMovie.observe(viewLifecycleOwner) {
+            binding?.rycFavorite?.adapter = TruyenAdapter(
+                requireContext(),
+                hoanThanhVM.allMovie.value?.allMovie ?: listOf(),
+                this
+            )
+            binding?.viewPagerBanner?.adapter = BannerAdapter(
+                requireContext(),
+                ArrayList(hoanThanhVM.allMovie.value?.allMovie) ?: arrayListOf()
+            )
         }
-        viewModel.allMoviePopular.observe(viewLifecycleOwner){
-            binding?.rycPopular?.adapter = TruyenAdapter(requireContext(), viewModel.allMoviePopular.value?.allMovie ?: listOf(),this)
+        viewModel.allMoviePopular.observe(viewLifecycleOwner) {
+            binding?.rycPopular?.adapter = TruyenAdapter(
+                requireContext(),
+                viewModel.allMoviePopular.value?.allMovie ?: listOf(),
+                this
+            )
         }
-        viewModel.allMovieUpComing.observe(viewLifecycleOwner){
-            binding?.rycUpComing?.adapter = TruyenAdapter(requireContext(), viewModel.allMovieUpComing.value?.allMovie ?: listOf(),this)
+        viewModel.allMovieUpComing.observe(viewLifecycleOwner) {
+            binding?.rycUpComing?.adapter = TruyenAdapter(
+                requireContext(),
+                viewModel.allMovieUpComing.value?.allMovie ?: listOf(),
+                this
+            )
         }
-        viewModel.allMovieTopRate.observe(viewLifecycleOwner){
-            binding?.rycTopRate?.adapter = TruyenAdapter(requireContext(), viewModel.allMovieTopRate.value?.allMovie ?: listOf(),this)
+        viewModel.allMovieTopRate.observe(viewLifecycleOwner) {
+            binding?.rycTopRate?.adapter = TruyenAdapter(
+                requireContext(),
+                viewModel.allMovieTopRate.value?.allMovie ?: listOf(),
+                this
+            )
         }
 
 
@@ -117,7 +136,8 @@ class FragmentTrangChu : Fragment(), CallBackGoToDetail {
 
     override fun goToDetail(movieId: Int) {
         viewModelDetail.movieId.value = movieId
-        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.ln_main, FragmentChiTietPhim()).addToBackStack("").commit()
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.ln_main, FragmentChiTietPhim()).addToBackStack("").commit()
     }
 }
 
